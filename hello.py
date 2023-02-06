@@ -9,8 +9,8 @@ from sys import exit
 try:
     r = redis.Redis(
         host=os.getenv("REDIS_HOST"),
-        port=int(os.getenv("REDIS_PORT")),
-        db=int(os.getenv("REDIS_DB")),
+        port=int(os.getenv("REDIS_PORT", 6379)),
+        db=int(os.getenv("REDIS_DB", 0)),
     )
     r.set("counter", 0)
 except ConnectionError:
